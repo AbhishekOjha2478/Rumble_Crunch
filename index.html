@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css"><link>
     <title>React Boom</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+        <h1>Hey there I am George</h1>
+    </div>
     <script
       crossorigin
       src="https://unpkg.com/react@18/umd/react.development.js"
@@ -15,12 +18,6 @@
       crossorigin
       src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
     ></script>
-    <script>                                     //{} is an object(empty as of now)
-        const heading = React.createElement("h1", {}, "Hello World using React!!!");
-
-        const root = ReactDOM.createRoot(document.getElementById("root"));
-        root.render(heading);
-
-    </script>
+    <script src = "./App.js"></script>
   </body>
 </html>
