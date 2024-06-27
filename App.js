@@ -1,21 +1,27 @@
-//{} is an object(to fill attributes of the h1 tag)
-// const heading = React.createElement(
-//   "h1",
-//   { id: "heading" },
-//   "Hello World using React!!!"
-// );
 import React from "react";
 import ReactDOM from "react-dom/client";
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I am h1 as superchild1"),
-    React.createElement("h1", {}, "I am sibling of h1"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", {}, "I am h1 as superchild2"),
-    React.createElement("h1", {}, "I am sibling of h1"),
-  ]),
-]);
-console.log(parent);
+
+//React element
+const me = <h1>"My name is george"</h1>;
+//normal var
+const age = 24;
+
+//React functional Component
+const Heading = () => (
+  <>
+    <h1 id="jsxHeading">"Namaste React using JSX"</h1>
+    {me}
+    <h2>"My age is {age}</h2>
+  </>
+);
+//React functional Component
+const HeadingComponent = () => (
+  <div>
+    <Heading />
+    <h1 id="Heading">"Namaste React functional Component"</h1>
+  </div>
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+
+root.render(<HeadingComponent />);
