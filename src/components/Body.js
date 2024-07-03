@@ -1,10 +1,31 @@
 import Res_card from "./Res_card";
+import { useState, useEffect } from "react";
 import extractedResList from "../utils/extractedResList";
-import { useState } from "react";
 
 const Body = () => {
   const [resList, setResList] = useState(extractedResList);
-  
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    //  fetching data from swiggy live API
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.00480&lng=75.94630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    // changing data to json
+    const json = await data.json();
+
+    console.log(json);
+    // As resList was an array having list of restaurants so we will give the path till restaurants list in fetched data 
+    //optional chaining using .?
+    setResList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  };
+
+//   if(resList.length ===0)
+//     return <Shimmer/>
+
   return (
     <div className="body">
       <button

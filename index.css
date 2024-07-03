@@ -54,3 +54,11 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.shimmer-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimCard{
+    background: rgb(231, 228, 228);
+}
