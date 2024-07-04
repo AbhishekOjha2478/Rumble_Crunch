@@ -1,9 +1,10 @@
 import Res_card from "./Res_card";
 import { useState, useEffect } from "react";
-import extractedResList from "../utils/extractedResList";
+//import extractedResList from "../utils/extractedResList";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
-  const [resList, setResList] = useState(extractedResList);
+  const [resList, setResList] = useState([]);
 
   useEffect(() => {
     fetchData();
@@ -18,13 +19,17 @@ const Body = () => {
     const json = await data.json();
 
     console.log(json);
-    // As resList was an array having list of restaurants so we will give the path till restaurants list in fetched data 
+    // As resList was an array having list of restaurants so we will give the path till restaurants list in fetched data
     //optional chaining using .?
-    setResList(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setResList(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
-//   if(resList.length ===0)
-//     return <Shimmer/>
+    //conditional rendering
+  if (resList.length === 0) {
+    return <Shimmer />;
+  }
 
   return (
     <div className="body">
