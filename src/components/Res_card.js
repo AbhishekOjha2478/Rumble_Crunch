@@ -17,7 +17,7 @@ const Res_card = (props) => {
       <h5>{sla.deliveryTime} minutes</h5>
       <h5>{areaName}</h5>
       <h5>{sla.lastMileTravelString}</h5>
-      <h5>{veg === true ? "Pure-Veg" : "Non-veg"}</h5>
+      <h5>{veg === true ? "Pure-Veg": "Non-veg"}</h5>
     </div>
   );
 };
