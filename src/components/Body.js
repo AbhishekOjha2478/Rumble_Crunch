@@ -2,6 +2,8 @@ import Res_card from "./Res_card";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { SWIGGY_API } from "../utils/constants";
+
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -13,7 +15,7 @@ const Body = () => {
   const fetchData = async () => {
     //  fetching data from swiggy live API
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=31.00480&lng=75.94630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      SWIGGY_API
     );
     // changing data to json
     const json = await data.json();
