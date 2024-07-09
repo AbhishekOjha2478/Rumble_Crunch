@@ -1,7 +1,7 @@
 import Res_card from "./Res_card";
 import { useState, useEffect } from "react";
-//import extractedResList from "../utils/extractedResList";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -26,7 +26,7 @@ const Body = () => {
     );
   };
 
-    //conditional rendering
+  //conditional rendering
   if (resList.length === 0) {
     return <Shimmer />;
   }
@@ -44,7 +44,12 @@ const Body = () => {
       </button>
       <div className="res-container">
         {resList.map((restaurant) => (
-          <Res_card key={restaurant.info.id} Res_data={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <Res_card Res_data={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
