@@ -84,3 +84,8 @@
     margin: 3px;  
     background: rgb(226, 230, 234);  
 }
+
+.user-card{
+    padding: 10px;
+    border: 1px solid black;
+}

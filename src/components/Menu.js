@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 const Menu = () => {
   const [resMenuData, setResMenuData] = useState(null);
 
-  const { resId } = useParams;
+  const { resId } = useParams();
 
   const fetchMenu = async () => {
     const data = await fetch(MENU_URL + resId);
@@ -33,7 +33,7 @@ const Menu = () => {
       <ul>
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
-            {item.card.info.name} - Rs.{item.card.info.price / 100}
+            {item.card.info.name} - Rs.{item.card.info.price / 100 || item.card.info.defaultPrice / 100}
           </li>
         ))}
       </ul>

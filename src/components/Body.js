@@ -29,7 +29,7 @@ const Body = () => {
   };
 
   //conditional rendering
-  if (resList.length === 0) {
+  if (resList?.length === 0) {
     return <Shimmer />;
   }
 
@@ -38,14 +38,14 @@ const Body = () => {
       <button
         className="filter"
         onClick={() => {
-          const filteredList = resList.filter((res) => res.info.avgRating >= 4);
+          const filteredList = resList?.filter((res) => res.info.avgRating >= 4);
           setResList(filteredList);
         }}
       >
         Top-rated Restaurants
       </button>
       <div className="res-container">
-        {resList.map((restaurant) => (
+        {resList?.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
