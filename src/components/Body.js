@@ -1,35 +1,22 @@
+import React, { useState, useEffect } from "react";
 import Res_card from "./Res_card";
-import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import { SWIGGY_API } from "../utils/constants";
-
+import useApiData from "../utils/useApiData";
 
 const Body = () => {
+  const apiData = useApiData();
   const [resList, setResList] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (apiData) {
+      setResList(apiData);
+    }
+  }, [apiData]);
+  console.log("apidata =  ", apiData)
 
-  const fetchData = async () => {
-    //  fetching data from swiggy live API
-    const data = await fetch(
-      SWIGGY_API
-    );
-    // changing data to json
-    const json = await data.json();
-
-    console.log(json);
-    // As resList was an array having list of restaurants so we will give the path till restaurants list in fetched data
-    //optional chaining using .?
-    setResList(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
-
-  //conditional rendering
-  if (resList?.length === 0) {
+  // Conditional rendering
+  if (!resList || resList.length === 0) {
     return <Shimmer />;
   }
 
@@ -38,14 +25,15 @@ const Body = () => {
       <button
         className="filter"
         onClick={() => {
-          const filteredList = resList?.filter((res) => res.info.avgRating >= 4);
+          const filteredList = resList.filter((res) => res.info.avgRating >= 4);
+          console.log(filteredList)
           setResList(filteredList);
         }}
       >
         Top-rated Restaurants
       </button>
       <div className="res-container">
-        {resList?.map((restaurant) => (
+        {resList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
@@ -57,4 +45,5 @@ const Body = () => {
     </div>
   );
 };
+
 export default Body;

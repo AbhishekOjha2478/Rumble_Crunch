@@ -1,22 +1,14 @@
-import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-import { MENU_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import useResMenu from "../utils/useResMenu";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Menu = () => {
-  const [resMenuData, setResMenuData] = useState(null);
-
   const { resId } = useParams();
+  const resMenuData = useResMenu(resId);
+  const onlineStatus = useOnlineStatus();
 
-  const fetchMenu = async () => {
-    const data = await fetch(MENU_URL + resId);
-    const json = await data.json();
-    setResMenuData(json);
-    console.log(json);
-  };
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  if (onlineStatus === false) return <h1>Looks like you are Offline</h1>;
   if (resMenuData === null) return <Shimmer />;
   const { name, cuisines, costForTwoMessage } =
     resMenuData?.data?.cards[2]?.card?.card?.info;
@@ -33,7 +25,8 @@ const Menu = () => {
       <ul>
         {itemCards.map((item) => (
           <li key={item.card.info.id}>
-            {item.card.info.name} - Rs.{item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+            {item.card.info.name} - Rs.
+            {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
           </li>
         ))}
       </ul>
