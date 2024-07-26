@@ -17,7 +17,7 @@ const AppLayout = () => (
   </div>
 );
 const Grocery = lazy(() => import("./components/Grocery"));
-// const Grocery = lazy(()=>{import("./components/Grocery")})
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
