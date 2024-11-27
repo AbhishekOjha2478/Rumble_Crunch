@@ -6,7 +6,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import Menu from "./components/Menu";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createHashRouter, RouterProvider, Outlet } from "react-router-dom";
 // import Shimmer from "./components/Shimmer";
 // import Grocery from "./components/Grocery";
 
@@ -18,7 +18,7 @@ const AppLayout = () => (
 );
 const Grocery = lazy(() => import("./components/Grocery"));
 
-const appRouter = createBrowserRouter([
+const appRouter = createHashRouter([
   {
     path: "/",
     element: <AppLayout />,
