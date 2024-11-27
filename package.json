@@ -1,11 +1,13 @@
 {
-  "homepage": "https://.github.io/my-app",
+  "homepage": "https://AbhishekOjha2478.github.io/Rumble_Crunch",
   "name": "reactboom",
   "version": "1.0.0",
   "description": "This is React -Boom by Abhishek Ojha",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "jest"
   },
   "repository": {
@@ -18,7 +20,6 @@
   "bugs": {
     "url": "https://github.com/AbhishekOjha2478/ReactBoom/issues"
   },
-  "homepage": "https://github.com/AbhishekOjha2478/ReactBoom#readme",
   "devDependencies": {
     "parcel": "^2.12.0",
     "postcss": "^8.4.39",
@@ -26,6 +27,7 @@
     "tailwindcss": "^3.4.6"
   },
   "dependencies": {
+    "gh-pages": "^6.2.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1"
