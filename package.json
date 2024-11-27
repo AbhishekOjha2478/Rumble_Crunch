@@ -4,8 +4,6 @@
   "version": "1.0.0",
   "description": "This is React -Boom by Abhishek Ojha",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test": "jest"
